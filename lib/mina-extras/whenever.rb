@@ -12,14 +12,14 @@ set :whenever_clear_flags,  lambda { "--clear-crontab #{fetch(:whenever_identifi
 namespace :whenever do
   desc "Update application's crontab entries using Whenever"
   task :update_crontab do
-    queue! %[
+    command %[
       #{fetch(:whenever_command)} #{fetch(:whenever_update_flags)}
     ]
   end
 
   desc "Clear application's crontab entries using Whenever"
   task :clear_crontab do
-    queue! %[
+    command %[
       #{fetch(:whenever_command)} #{fetch(:whenever_clear_flags)}
     ]
   end
